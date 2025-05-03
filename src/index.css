@@ -1,101 +1,132 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Indie+Flower&family=Pacifico&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 340 100% 98%;
+    --foreground: 340 5% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 340 5% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 340 5% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 340 95% 75%;
+    --primary-foreground: 340 5% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 265 80% 90%;
+    --secondary-foreground: 340 5% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 340 10% 92%;
+    --muted-foreground: 340 5% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 190 80% 85%;
+    --accent-foreground: 340 5% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 340 40% 85%;
+    --input: 340 40% 85%;
+    --ring: 340 95% 75%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  * {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23FF9EB5' style='transform: rotate(45deg);'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") 12 12, auto;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer utilities {
+  .pixel-borders {
+    box-shadow: 
+      0 -4px 0 0 rgba(0, 0, 0, 0.1), 
+      0 4px 0 0 rgba(0, 0, 0, 0.1), 
+      -4px 0 0 0 rgba(0, 0, 0, 0.1), 
+      4px 0 0 0 rgba(0, 0, 0, 0.1);
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .pixel-btn {
+    position: relative;
+    font-family: 'Press Start 2P', cursive;
+    padding: 0.6em 1em;
+    background-color: theme('colors.accent-pink');
+    color: white;
+    border: none;
+    box-shadow: 
+      0 4px 0 0 theme('colors.dark-pink'),
+      0 6px 0 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .pixel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 0 0 theme('colors.dark-pink'),
+      0 8px 0 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .pixel-btn:active {
+    transform: translateY(2px);
+    box-shadow: 
+      0 2px 0 0 theme('colors.dark-pink'),
+      0 4px 0 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .retro-shadow {
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .polaroid {
+    background-color: white;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: rotate(var(--rotate-deg, 0deg));
+  }
+
+  .pixel-border {
+    border-style: solid;
+    border-width: 4px;
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><path fill="%23FF9EB5" d="M0 0h1v1H0zm1 1h1v1H1zm1 1h1v1H2zm1-1h1v1H3z"/></svg>') 1 stretch;
+  }
+
+  .btn-candy {
+    background-color: theme('colors.accent-pink');
+    border-radius: 9999px;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 0 theme('colors.dark-pink');
+  }
+
+  .btn-candy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 theme('colors.dark-pink');
+  }
+
+  .btn-candy:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 theme('colors.dark-pink');
+  }
+  
+  .heart-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='%23FFD1DC' fill-opacity='0.2'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 40px 40px;
+  }
+  
+  .star-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z' fill='%23E6E6FA' fill-opacity='0.3'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 40px 40px;
   }
 }
