@@ -13,7 +13,7 @@ interface Card {
 
 // Create initial cards
 const createCards = (): Card[] => {
-  const cardTypes = ['❤️', '💙', '💛', '💚', '💜', '⭐', '✨', '🌟'];
+  const cardTypes = ['❤️', '💙', '💖', '💚', '💜', '⭐', '✨', '🌟'];
   
   // Create pairs
   const cards = [...cardTypes, ...cardTypes].map((type, index) => ({
@@ -111,7 +111,7 @@ const MemoryGame: React.FC = () => {
         <div className="text-center">
           <div className="flex justify-center my-4 animate-float">
             <Heart className="h-10 w-10 text-accent-pink mx-2" />
-            <Star className="h-10 w-10 text-accent-yellow mx-2" />
+            <Star className="h-10 w-10 text-accent-blue mx-2" />
             <Heart className="h-10 w-10 text-accent-blue mx-2" />
           </div>
           
@@ -125,7 +125,7 @@ const MemoryGame: React.FC = () => {
              "Well done! Every move was worth it, just like our journey together!"}
           </p>
           
-          <PixelButton onClick={resetGame} variant="yellow">
+          <PixelButton onClick={resetGame} variant="blue">
             Play Again
           </PixelButton>
         </div>

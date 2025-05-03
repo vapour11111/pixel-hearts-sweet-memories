@@ -14,7 +14,7 @@ const Games: React.FC = () => {
   const [activeGame, setActiveGame] = useState<GameType>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-accent-yellow/30 to-pastel-blue/50 bubble-bg pt-20 pb-10 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-pastel-blue/30 to-pastel-blue/50 bubble-bg pt-20 pb-10 px-4">
       <FloatingHearts />
       <TwinklingStars />
       
@@ -49,8 +49,8 @@ const Games: React.FC = () => {
                 <div className="grid grid-cols-2 gap-1 w-12">
                   <div className="bg-accent-blue w-5 h-5 rounded"></div>
                   <div className="bg-accent-pink w-5 h-5 rounded"></div>
-                  <div className="bg-accent-yellow w-5 h-5 rounded"></div>
                   <div className="bg-accent-blue w-5 h-5 rounded"></div>
+                  <div className="bg-accent-pink w-5 h-5 rounded"></div>
                 </div>
               </div>
               <h3 className="text-xl font-pixel text-dark-blue mb-2">Memory Game</h3>
@@ -67,7 +67,7 @@ const Games: React.FC = () => {
             {activeGame === 'quiz' ? <LoveQuiz /> : <MemoryGame />}
             
             <div className="mt-6 text-center">
-              <PixelButton variant="yellow" onClick={() => setActiveGame(null)} className="mx-auto">
+              <PixelButton variant="blue" onClick={() => setActiveGame(null)} className="mx-auto">
                 Back to Games
               </PixelButton>
             </div>

@@ -23,7 +23,7 @@ const Gallery: React.FC = () => {
       caption: "The flowers you surprised me with",
       rotation: 2,
       category: 'gifts',
-      variant: 'yellow'
+      variant: 'blue'
     },
     {
       src: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb",
@@ -47,7 +47,7 @@ const Gallery: React.FC = () => {
       caption: "That perfect beach day",
       rotation: -1,
       category: 'adventures',
-      variant: 'yellow'
+      variant: 'blue'
     },
     {
       src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07",
@@ -98,7 +98,6 @@ const Gallery: React.FC = () => {
               key={index} 
               className="flex justify-center transform transition-all duration-700"
               style={{ 
-                animationDelay: `${index * 0.1}s`,
                 opacity: 0,
                 animation: 'fadeIn 0.5s forwards',
                 animationDelay: `${index * 0.1}s`
@@ -125,12 +124,14 @@ const Gallery: React.FC = () => {
         </div>
       </div>
       
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}
+      </style>
     </div>
   );
 };

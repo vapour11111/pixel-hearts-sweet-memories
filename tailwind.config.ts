@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -26,14 +25,13 @@ export default {
 			},
 			colors: {
 				'pastel-blue': '#BDE0FE',
-				'pastel-yellow': '#FFD166',
+				'pastel-blue-light': '#E6F4FF',
 				'pastel-pink': '#FFB3C6',
 				'pastel-cream': '#FFFAF0',
 				'pastel-lavender': '#E6E6FA',
 				'accent-blue': '#5C9DFF',
+				'accent-blue-dark': '#3D7DD8',
 				'dark-blue': '#3D7DD8',
-				'accent-yellow': '#FFD166',
-				'dark-yellow': '#EABC45',
 				'accent-pink': '#FF9EB5',
 				'dark-pink': '#FF6B8B',
 				border: 'hsl(var(--border))',
@@ -49,7 +47,7 @@ export default {
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
-					dark: '#EABC45',
+					dark: '#82A3E2',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',

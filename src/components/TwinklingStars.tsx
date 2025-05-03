@@ -12,8 +12,8 @@ const TwinklingStars: React.FC = () => {
     rotation: Math.random() * 360,
     type: Math.random() > 0.3 ? 'star' : 'sparkle',
     color: Math.random() > 0.5 
-      ? 'text-accent-yellow' 
-      : 'text-accent-blue',
+      ? 'text-accent-blue' 
+      : 'text-accent-pink',
   }));
 
   return (

@@ -10,11 +10,9 @@ const FloatingHearts: React.FC = () => {
     opacity: 0.2 + Math.random() * 0.4,
     fontSize: `${14 + Math.random() * 16}px`,
     type: Math.random() > 0.5 ? 'heart' : 'star',
-    color: Math.random() > 0.66 
+    color: Math.random() > 0.5 
       ? 'text-accent-blue' 
-      : Math.random() > 0.5 
-        ? 'text-accent-yellow' 
-        : 'text-accent-pink',
+      : 'text-accent-pink',
   }));
 
   return (

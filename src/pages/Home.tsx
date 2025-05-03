@@ -8,7 +8,7 @@ import { Heart, Star } from 'lucide-react';
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pastel-blue to-pastel-yellow heart-bg flex flex-col items-center justify-center py-20 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-pastel-blue to-pastel-lavender heart-bg flex flex-col items-center justify-center py-20 px-4">
       <FloatingHearts />
       <TwinklingStars />
       
@@ -16,14 +16,14 @@ const Home: React.FC = () => {
         <div className="mb-8 animate-float-fast">
           <div className="relative inline-block">
             <Heart className="h-20 w-20 mx-auto text-accent-blue animate-pulse-rainbow" />
-            <Star className="h-10 w-10 absolute -top-2 -right-2 text-accent-yellow animate-sparkle" />
+            <Star className="h-10 w-10 absolute -top-2 -right-2 text-accent-pink animate-sparkle" />
           </div>
         </div>
         
         <h1 className="text-4xl md:text-6xl font-pixel text-dark-blue mb-6 tracking-wider relative">
           <span className="animate-pulse-rainbow">Happy Anniversary!</span>
-          <div className="absolute -right-4 top-0 text-accent-yellow animate-twinkle">★</div>
-          <div className="absolute -left-4 bottom-0 text-accent-pink animate-twinkle" style={{ animationDelay: '1s' }}>★</div>
+          <div className="absolute -right-4 top-0 text-accent-pink animate-twinkle">★</div>
+          <div className="absolute -left-4 bottom-0 text-accent-blue animate-twinkle" style={{ animationDelay: '1s' }}>★</div>
         </h1>
         
         <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 mb-8">
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
             </PixelButton>
           </Link>
           <Link to="/gallery">
-            <PixelButton variant="yellow" className="group">
+            <PixelButton variant="blue" className="group">
               Photo Gallery
               <span className="ml-2 group-hover:animate-bounce-small inline-block">📷</span>
             </PixelButton>
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
         <p className="mt-2">May 3, 2025</p>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-pastel-yellow/50 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-pastel-lavender/50 to-transparent"></div>
     </div>
   );
 };
