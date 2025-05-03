@@ -110,7 +110,7 @@ const LoveQuiz: React.FC<LoveQuizProps> = ({ onComplete }) => {
         
         <p className="text-lg mb-6 font-cute">{getResultMessage()}</p>
         
-        <PixelButton onClick={resetQuiz} variant="yellow">
+        <PixelButton onClick={resetQuiz} variant="pink">
           Play Again
         </PixelButton>
       </div>

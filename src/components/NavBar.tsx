@@ -8,18 +8,18 @@ const NavBar: React.FC = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
   
   const links = [
-    { name: 'Home', path: '/', icon: <Heart className="w-3 h-3" /> },
-    { name: 'Our Story', path: '/story', icon: <Star className="w-3 h-3" /> },
-    { name: 'Gallery', path: '/gallery', icon: <Heart className="w-3 h-3" /> },
-    { name: 'Love Letter', path: '/letter', icon: <Star className="w-3 h-3" /> },
-    { name: 'Favorites', path: '/favorites', icon: <Heart className="w-3 h-3" /> },
-    { name: 'Games', path: '/games', icon: <Gamepad className="w-3 h-3" /> }
+    { name: 'Home', path: '/', icon: <Heart className="w-4 h-4" /> },
+    { name: 'Our Story', path: '/story', icon: <Star className="w-4 h-4" /> },
+    { name: 'Gallery', path: '/gallery', icon: <Heart className="w-4 h-4" /> },
+    { name: 'Love Letter', path: '/letter', icon: <Star className="w-4 h-4" /> },
+    { name: 'Favorites', path: '/favorites', icon: <Heart className="w-4 h-4" /> },
+    { name: 'Games', path: '/games', icon: <Gamepad className="w-4 h-4" /> }
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-accent-blue/80 via-white/80 to-accent-yellow/80 backdrop-blur-sm z-50 py-3 shadow-lg">
+    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-accent-blue/80 via-white/80 to-accent-pink/80 backdrop-blur-sm z-50 py-4 shadow-lg">
       <div className="container mx-auto">
-        <div className="flex justify-center items-center gap-4 md:gap-8 overflow-x-auto px-2 md:px-4">
+        <div className="flex justify-center items-center gap-3 md:gap-6 overflow-x-auto px-2 md:px-4">
           {links.map((link, index) => {
             const isActive = location.pathname === link.path;
             
@@ -28,33 +28,30 @@ const NavBar: React.FC = () => {
                 key={index}
                 to={link.path}
                 className={`
-                  whitespace-nowrap text-sm md:text-base font-pixel
+                  relative px-3 py-2 rounded-full transition-all duration-300
                   ${isActive 
-                    ? 'text-dark-blue' 
-                    : 'text-accent-blue hover:text-dark-blue'
+                    ? 'bg-white/30 text-dark-blue shadow-inner' 
+                    : 'hover:bg-white/20 text-accent-blue hover:text-dark-blue'
                   }
-                  transition-all duration-300 px-2 py-1 flex items-center relative
+                  font-pixel text-sm md:text-base whitespace-nowrap flex items-center
                 `}
                 onMouseEnter={() => setIsHovered(index)}
                 onMouseLeave={() => setIsHovered(null)}
               >
-                <div 
-                  className={`
-                    absolute inset-0 bg-white/20 rounded-md -z-10 transform scale-y-0 origin-bottom transition-transform duration-300
-                    ${isActive || isHovered === index ? 'scale-y-100' : ''}
-                  `}
-                />
-                <div 
+                <span 
                   className={`
                     ${isActive ? 'animate-pulse-rainbow' : 'animate-pulse-soft'}
                     mr-2 inline-block
                   `}
                 >
                   {link.icon}
-                </div>
+                </span>
                 {link.name}
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-blue animate-pulse-rainbow"></span>
+                {(isActive || isHovered === index) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-blue to-accent-pink animate-pulse-rainbow"></span>
+                )}
+                {(isActive || isHovered === index) && (
+                  <span className="absolute -inset-0.5 rounded-full bg-white/10 -z-10 animate-pulse-soft"></span>
                 )}
               </Link>
             );

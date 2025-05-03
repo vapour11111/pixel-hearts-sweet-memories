@@ -1,103 +1,108 @@
 
-import React, { useState, useEffect } from 'react';
-import PixelButton from '../components/PixelButton';
+import React, { useEffect, useState, useRef } from 'react';
 import FloatingHearts from '../components/FloatingHearts';
+import TwinklingStars from '../components/TwinklingStars';
+import PixelButton from '../components/PixelButton';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 
 const LoveLetter: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showFullLetter, setShowFullLetter] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
+  const [letterContent, setLetterContent] = useState('');
+  const letterRef = useRef<HTMLDivElement>(null);
   
+  const fullLetter = `My Dearest,
+
+One year ago today, our story began. It's been 365 days of laughter, growth, and unforgettable moments together.
+
+I still remember our first date, how nervous I was, and how quickly that nervousness melted away when I saw your smile.
+
+Every day with you has been a blessing. From our inside jokes that make no sense to anyone else, to the quiet moments we share just being together.
+
+You've seen me at my best and my worst, and somehow you've loved me through it all.
+
+Thank you for your patience, your kindness, and your love. Thank you for being exactly who you are.
+
+I can't wait to see where our journey takes us next. Here's to many more years of us.
+
+All my love,
+Your Person 💙`;
+
   useEffect(() => {
-    if (isOpen) {
-      // After typewriter animation completes, show the full letter
-      const timer = setTimeout(() => {
-        setShowFullLetter(true);
-      }, 7000); // Adjust based on your typewriter animation duration
+    let currentIndex = 0;
+    
+    if (isTyping) {
+      const typingInterval = setInterval(() => {
+        if (currentIndex < fullLetter.length) {
+          setLetterContent(prev => prev + fullLetter[currentIndex]);
+          currentIndex++;
+          
+          // Scroll the container to the bottom
+          if (letterRef.current) {
+            letterRef.current.scrollTop = letterRef.current.scrollHeight;
+          }
+        } else {
+          setIsTyping(false);
+          clearInterval(typingInterval);
+        }
+      }, 50);
       
-      return () => clearTimeout(timer);
+      return () => clearInterval(typingInterval);
     }
-  }, [isOpen]);
-  
+  }, [isTyping]);
+
+  const restartTypewriter = () => {
+    setLetterContent('');
+    setIsTyping(true);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-accent-blue/40 to-pastel-lavender star-bg pt-20 pb-10 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-pastel-blue/50 to-pastel-lavender/80 pt-20 pb-10 px-4 bubble-bg">
       <FloatingHearts />
+      <TwinklingStars />
       
       <div className="container mx-auto max-w-3xl">
-        <h1 className="text-3xl md:text-4xl font-pixel text-dark-blue mb-8 text-center pt-8">My Love Letter to You</h1>
+        <h1 className="text-3xl md:text-4xl font-pixel text-dark-blue mb-8 text-center relative">
+          <Heart className="inline-block mr-2 h-8 w-8 text-accent-pink animate-pulse-soft" />
+          Love Letter
+          <Heart className="inline-block ml-2 h-8 w-8 text-accent-blue animate-pulse-soft" />
+          <div className="absolute -top-2 -right-4 text-accent-pink animate-twinkle text-xl">★</div>
+          <div className="absolute -bottom-2 -left-4 text-accent-blue animate-twinkle text-xl" style={{ animationDelay: '1s' }}>★</div>
+        </h1>
         
-        <div className="bg-white/90 backdrop-blur-sm rounded-lg retro-shadow pixel-border p-8 mb-10 relative">
-          {!isOpen ? (
-            <div className="text-center">
-              <div className="mb-8">
-                <Heart className="h-16 w-16 mx-auto text-accent-blue animate-pulse-soft" />
-              </div>
-              <h3 className="text-xl font-handwritten mb-4">A Special Message for You</h3>
-              <p className="font-cute text-lg mb-8">Click the button below to open my heartfelt letter...</p>
-              <PixelButton onClick={() => setIsOpen(true)} variant="blue">
-                Open Letter ♥
-              </PixelButton>
-            </div>
-          ) : (
-            <div className="letter-content">
-              <div className="text-right mb-4">
-                <p className="font-cute text-accent-blue">May 3rd, 2025</p>
-              </div>
-              
-              {!showFullLetter ? (
-                <div className="mb-6">
-                  <p className="font-cute text-lg mb-4">
-                    <span className="typewriter-container">
-                      <span className="typewriter">My Dearest,</span>
-                    </span>
-                  </p>
-                  <p className="font-cute text-lg opacity-0">
-                    As I sit down to write this letter, my heart is overflowing with love and gratitude.
-                    It's been one year since we began this beautiful journey together...
-                  </p>
-                </div>
-              ) : (
-                <div className="mb-6 animate-fade-in">
-                  <p className="font-cute text-lg mb-4">My Dearest,</p>
-                  <p className="font-cute text-lg mb-4">
-                    As I sit down to write this letter, my heart is overflowing with love and gratitude. 
-                    It's been one year since we began this beautiful journey together, and what an incredible year it has been!
-                  </p>
-                  <p className="font-cute text-lg mb-4">
-                    I still remember the butterflies I felt when we first met. Your smile lit up the room and I knew immediately 
-                    that you were someone special. Little did I know that you would become my favorite person, my best friend, and my greatest adventure.
-                  </p>
-                  <p className="font-cute text-lg mb-4">
-                    Through every laugh, every tear, every silly moment and every serious conversation, my love for you has only grown stronger. 
-                    You've shown me what it means to be truly seen and accepted. You challenge me to be better while loving me exactly as I am.
-                  </p>
-                  <p className="font-cute text-lg mb-4">
-                    This past year has given us so many beautiful memories: our first vacation, meeting each other's families, 
-                    late-night conversations, early morning coffee runs, and countless moments that have become the foundation of our story.
-                  </p>
-                  <p className="font-cute text-lg mb-4">
-                    I created this little digital space as a celebration of us — of our story so far and all the chapters yet to be written. 
-                    I hope it makes you smile and reminds you of how incredibly special you are to me.
-                  </p>
-                  <p className="font-cute text-lg mb-4">
-                    Thank you for choosing me, for loving me, and for making every day brighter simply by being in it. 
-                    I love you more than words can express, and I can't wait to continue our adventure together.
-                  </p>
-                </div>
-              )}
-              
-              <div className="text-right">
-                <p className="font-handwritten text-xl text-accent-blue">With all my heart,</p>
-                <p className="font-handwritten text-xl text-accent-blue">Your Name</p>
-              </div>
-            </div>
-          )}
+        <div className="bg-white/90 backdrop-blur-sm p-8 rounded-lg retro-shadow pixel-border border-accent-pink mb-10">
+          <div 
+            ref={letterRef} 
+            className="h-[400px] md:h-[500px] overflow-y-auto font-handwritten text-lg md:text-xl leading-relaxed mb-6 whitespace-pre-line"
+          >
+            {letterContent}
+            {isTyping && <span className="inline-block w-2 h-4 bg-accent-pink animate-pulse ml-1"></span>}
+          </div>
+          
+          <div className="flex justify-center gap-4 mt-6">
+            <PixelButton onClick={restartTypewriter} variant="blue" disabled={isTyping}>
+              <span className="flex items-center">
+                <span className="mr-2">✉️</span>
+                Read Again
+              </span>
+            </PixelButton>
+            <PixelButton variant="candy">
+              <span className="flex items-center">
+                <span className="mr-2">💌</span>
+                Send a Reply
+              </span>
+            </PixelButton>
+          </div>
         </div>
         
-        <div className="mt-8 flex justify-center">
-          <Link to="/favorites">
-            <PixelButton variant="yellow">Our Favorites</PixelButton>
+        <div className="flex justify-center mt-8">
+          <Link to="/">
+            <PixelButton variant="blue">
+              <span className="flex items-center">
+                <span className="mr-2">🏠</span>
+                Back Home
+              </span>
+            </PixelButton>
           </Link>
         </div>
       </div>

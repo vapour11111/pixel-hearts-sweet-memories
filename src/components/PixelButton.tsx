@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface PixelButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'candy' | 'blue';
+  variant?: 'default' | 'candy' | 'blue' | 'pink';
 }
 
 const PixelButton: React.FC<PixelButtonProps> = ({ 
@@ -16,6 +16,7 @@ const PixelButton: React.FC<PixelButtonProps> = ({
     switch(variant) {
       case 'candy': return 'btn-candy bg-accent-pink hover:bg-accent-pink/90';
       case 'blue': return 'pixel-btn bg-accent-blue hover:bg-accent-blue/90';
+      case 'pink': return 'pixel-btn bg-accent-pink hover:bg-accent-pink/90';
       default: return 'pixel-btn';
     }
   };
