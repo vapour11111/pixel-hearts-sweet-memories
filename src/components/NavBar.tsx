@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, Star } from 'lucide-react';
+import { Heart, Star, Gamepad } from 'lucide-react';
 
 const NavBar: React.FC = () => {
   const location = useLocation();
@@ -13,12 +13,13 @@ const NavBar: React.FC = () => {
     { name: 'Gallery', path: '/gallery', icon: <Heart className="w-3 h-3" /> },
     { name: 'Love Letter', path: '/letter', icon: <Star className="w-3 h-3" /> },
     { name: 'Favorites', path: '/favorites', icon: <Heart className="w-3 h-3" /> },
+    { name: 'Games', path: '/games', icon: <Gamepad className="w-3 h-3" /> }
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-pastel-blue/90 via-pastel-cream/90 to-pastel-yellow/90 backdrop-blur-sm z-50 py-3 shadow-lg">
+    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-accent-blue/80 via-white/80 to-accent-yellow/80 backdrop-blur-sm z-50 py-3 shadow-lg">
       <div className="container mx-auto">
-        <div className="flex justify-center items-center gap-6 md:gap-10 overflow-x-auto px-4">
+        <div className="flex justify-center items-center gap-4 md:gap-8 overflow-x-auto px-2 md:px-4">
           {links.map((link, index) => {
             const isActive = location.pathname === link.path;
             
