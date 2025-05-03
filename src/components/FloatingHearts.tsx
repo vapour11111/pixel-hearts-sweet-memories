@@ -3,12 +3,18 @@ import React from 'react';
 
 const FloatingHearts: React.FC = () => {
   // Generate randomized hearts for the animation
-  const heartStyles = Array.from({ length: 15 }, (_, i) => ({
+  const heartStyles = Array.from({ length: 20 }, (_, i) => ({
     left: `${Math.random() * 100}%`,
     animationDuration: `${3 + Math.random() * 5}s`,
     animationDelay: `${Math.random() * 5}s`,
-    opacity: 0.2 + Math.random() * 0.5,
+    opacity: 0.2 + Math.random() * 0.4,
     fontSize: `${14 + Math.random() * 16}px`,
+    type: Math.random() > 0.5 ? 'heart' : 'star',
+    color: Math.random() > 0.66 
+      ? 'text-accent-blue' 
+      : Math.random() > 0.5 
+        ? 'text-accent-yellow' 
+        : 'text-accent-pink',
   }));
 
   return (
@@ -16,7 +22,7 @@ const FloatingHearts: React.FC = () => {
       {heartStyles.map((style, index) => (
         <div 
           key={index}
-          className="absolute text-pastel-pink animate-float"
+          className={`absolute animate-float ${style.color}`}
           style={{
             left: style.left,
             animationDuration: style.animationDuration,
@@ -25,7 +31,7 @@ const FloatingHearts: React.FC = () => {
             fontSize: style.fontSize,
           }}
         >
-          ♥
+          {style.type === 'heart' ? '♥' : '★'}
         </div>
       ))}
     </div>

@@ -8,6 +8,7 @@ interface PixelPhotoProps {
   caption?: string;
   rotation?: number;
   className?: string;
+  variant?: 'blue' | 'yellow' | 'pink';
 }
 
 const PixelPhoto: React.FC<PixelPhotoProps> = ({
@@ -16,20 +17,34 @@ const PixelPhoto: React.FC<PixelPhotoProps> = ({
   caption,
   rotation = 0,
   className,
+  variant = 'blue',
 }) => {
+  const borderColorClass = {
+    'blue': 'border-accent-blue',
+    'yellow': 'border-accent-yellow',
+    'pink': 'border-accent-pink',
+  }[variant];
+
+  const shadowColorClass = {
+    'blue': 'shadow-accent-blue/30',
+    'yellow': 'shadow-accent-yellow/30',
+    'pink': 'shadow-accent-pink/30',
+  }[variant];
+
   return (
     <div 
       className={cn(
-        'polaroid retro-shadow mx-auto max-w-xs transition-transform hover:scale-105',
+        'polaroid retro-shadow mx-auto max-w-xs transition-all duration-300 hover:scale-105 hover:shadow-lg',
+        shadowColorClass,
         className
       )}
       style={{ '--rotate-deg': `${rotation}deg` } as React.CSSProperties}
     >
-      <div className="pixel-border overflow-hidden">
+      <div className={cn("pixel-border overflow-hidden", borderColorClass)}>
         <img
           src={imageSrc}
           alt={altText}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
       {caption && (
